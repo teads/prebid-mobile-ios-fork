@@ -29,6 +29,8 @@ enum CustomPbsSettings {
         Prebid.shared.pbsDebug = true
         // The bid info is read back from the SDK log file (see CustomPbsInterstitialController).
         Log.clearLogFile()
+        // The SDK doesn't log win/imp event calls, so they are recorded from the network.
+        RequestRecorder.start()
     }
 
     /// Account id is reset by TestCasesViewController on the next test case.

@@ -97,6 +97,30 @@ class CustomPbsInterstitialUITest: XCTestCase {
         XCTAssertFalse(adFailedButton.isEnabled)
     }
 
+    /// C7: the win and impression URLs from the bid are called. The impression only once, and only after show.
+    /// The events label sits under the interstitial, so it is read before show and after close.
+    func testImpressionEvents() throws {
+        launch()
+        waitForEnabled(element: adReceivedButton, failElement: adFailedButton, waitSeconds: loadTimeout)
+        let bidInfo = try readBidInfo()
+        let impURL = try XCTUnwrap(bidInfo["impEventUrl"] as? String, "no imp event URL in the bid")
+        let winURL = try XCTUnwrap(bidInfo["winEventUrl"] as? String, "no win event URL in the bid")
+
+        sleep(2)
+        XCTAssertEqual(try firedCount(of: impURL), 0, "impression sent before the ad was shown")
+
+        showInterstitial()
+        creativeShouldNotBeBlank()
+        sleep(3)
+        let closeButton = app.buttons["PBMCloseButton"]
+        waitForHittable(element: closeButton, waitSeconds: closeButtonTimeout)
+        closeButton.tap()
+        waitForEnabled(element: app.buttons["interstitialDidDismissAd called"])
+
+        XCTAssertEqual(try firedCount(of: impURL), 1, "impression must be sent once after show")
+        XCTAssertGreaterThanOrEqual(try firedCount(of: winURL), 1, "win not sent")
+    }
+
     /// C5 (SHOULD)
     func testCreativeLayout() throws {
         launch()
@@ -210,6 +234,19 @@ class CustomPbsInterstitialUITest: XCTestCase {
         add(attachment)
         let data = try XCTUnwrap(label.label.data(using: .utf8))
         return try XCTUnwrap(JSONSerialization.jsonObject(with: data) as? [String: Any])
+    }
+
+    /// Times the app called `url`, from the `teadsFiredEvents` label.
+    private func firedCount(of url: String) throws -> Int {
+        let label = app.staticTexts["teadsFiredEvents"]
+        XCTAssertTrue(label.waitForExistence(timeout: 5), "fired events label not found")
+        let data = try XCTUnwrap(label.label.data(using: .utf8))
+        let fired = try XCTUnwrap(JSONSerialization.jsonObject(with: data) as? [String])
+        let attachment = XCTAttachment(string: label.label)
+        attachment.name = "fired_events.json"
+        attachment.lifetime = .keepAlways
+        add(attachment)
+        return fired.filter { $0 == url }.count
     }
 
     private func attachScreenshot(name: String) {

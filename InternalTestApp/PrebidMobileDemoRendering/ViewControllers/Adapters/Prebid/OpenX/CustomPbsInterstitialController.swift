@@ -8,6 +8,8 @@ class CustomPbsInterstitialController: PrebidInterstitialController {
     private static let bidResponseLogMarker = "Bid Response: "
 
     private let bidInfoLabel = UILabel()
+    /// Prebid Server event URLs (win, imp) the app has called, as a JSON array.
+    private let firedEventsLabel = UILabel()
 
     required init(rootController: AdapterViewController) {
         super.init(rootController: rootController)
@@ -18,10 +20,31 @@ class CustomPbsInterstitialController: PrebidInterstitialController {
         bidInfoLabel.numberOfLines = 0
         bidInfoLabel.font = .systemFont(ofSize: 9)
         rootController.actionsView.addArrangedSubview(bidInfoLabel)
+
+        firedEventsLabel.accessibilityIdentifier = "teadsFiredEvents"
+        firedEventsLabel.numberOfLines = 0
+        firedEventsLabel.font = .systemFont(ofSize: 9)
+        firedEventsLabel.text = "[]"
+        rootController.actionsView.addArrangedSubview(firedEventsLabel)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateFiredEvents),
+            name: RequestRecorder.didRecord,
+            object: nil
+        )
     }
 
     deinit {
+        NotificationCenter.default.removeObserver(self)
         CustomPbsSettings.restore()
+    }
+
+    @objc private func updateFiredEvents() {
+        let events = RequestRecorder.recordedURLs.filter { $0.contains("/event?") }
+        let text = (try? JSONSerialization.data(withJSONObject: events)).flatMap { String(data: $0, encoding: .utf8) } ?? "[]"
+        DispatchQueue.main.async { [weak self] in
+            self?.firedEventsLabel.text = text
+        }
     }
 
     override func loadAd() {
@@ -70,6 +93,8 @@ class CustomPbsInterstitialController: PrebidInterstitialController {
         info["targeting"] = prebid["targeting"] ?? [:]
         info["hasWinEvent"] = !((events["win"] as? String) ?? "").isEmpty
         info["hasImpEvent"] = !((events["imp"] as? String) ?? "").isEmpty
+        info["winEventUrl"] = events["win"] ?? ""
+        info["impEventUrl"] = events["imp"] ?? ""
 
         // Present because CustomPbsSettings enables PBS debug.
         let debug = (response["ext"] as? [String: Any])?["debug"] as? [String: Any]
