@@ -30,6 +30,7 @@ class ExamplesViewController: UIViewController {
     private var filterText = ""
     private var currentIntegrationKind: IntegrationKind?
     private var currentAdFormat: AdFormat?
+    private var serverItem: UIBarButtonItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +44,70 @@ class ExamplesViewController: UIViewController {
         }
         
         displayedCases = testCases
-        
+
         setupPickers()
+        setupServerMenu()
+    }
+
+    private func setupServerMenu() {
+        let serverItem = UIBarButtonItem(image: UIImage(systemName: "server.rack"), menu: serverMenu())
+        self.serverItem = serverItem
+        serverItem.accessibilityIdentifier = "prebidServerMenu"
+        serverItem.accessibilityLabel = "Prebid server"
+        navigationItem.rightBarButtonItems = (navigationItem.rightBarButtonItems ?? []) + [serverItem]
+        updateServerPrompt()
+    }
+
+    private func serverMenu() -> UIMenu {
+        let actions = PrebidServer.allCases.map { server in
+            UIAction(title: server.title, state: server == PrebidServer.selected ? .on : .off) { [weak self] _ in
+                self?.select(server)
+            }
+        }
+        return UIMenu(title: "Prebid server", children: actions)
+    }
+
+    private func select(_ server: PrebidServer) {
+        guard server.hostURL != nil else {
+            askTeadsHost()
+            return
+        }
+        PrebidServer.selected = server
+        server.apply()
+        serverItem?.menu = serverMenu()
+        updateServerPrompt()
+    }
+
+    /// The Teads host is not in the repo, so it is asked once and saved.
+    private func askTeadsHost() {
+        let alert = UIAlertController(
+            title: PrebidServer.teads.title,
+            message: "Enter the auction URL. It is saved on this device.",
+            preferredStyle: .alert
+        )
+        alert.addTextField { textField in
+            textField.placeholder = "http://<host>/openrtb2/auction"
+            textField.keyboardType = .URL
+            textField.autocapitalizationType = .none
+            textField.autocorrectionType = .no
+        }
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Save", style: .default) { [weak self, weak alert] _ in
+            let host = alert?.textFields?.first?.text?.trimmingCharacters(in: .whitespaces) ?? ""
+            guard !host.isEmpty else { return }
+            UserDefaults.standard.set(host, forKey: PrebidServer.teadsHostKey)
+            self?.select(.teads)
+        })
+        present(alert, animated: true)
+    }
+
+    private func updateServerPrompt() {
+        let title = PrebidServer.selected.title
+        if #available(iOS 26.0, *) {
+            navigationItem.subtitle = title
+        } else {
+            navigationItem.prompt = title
+        }
     }
     
     private func setupPickers() {

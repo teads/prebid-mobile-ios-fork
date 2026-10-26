@@ -85,7 +85,10 @@
 		0012D9122E215435007013F3 /* PrebidMobileGAMEventHandlers in Frameworks */ = {isa = PBXBuildFile; productRef = 0012D9112E215435007013F3 /* PrebidMobileGAMEventHandlers */; };
 		0012D9142E215435007013F3 /* PrebidMobileMAXAdapters in Frameworks */ = {isa = PBXBuildFile; productRef = 0012D9132E215435007013F3 /* PrebidMobileMAXAdapters */; };
 		0012D9262E2159C0007013F3 /* GoogleInteractiveMediaAds in Frameworks */ = {isa = PBXBuildFile; productRef = 0012D9252E2159C0007013F3 /* GoogleInteractiveMediaAds */; };
+		0FB488C8DF07C8D99F76F387 /* PrebidServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0119B5FF650BC0E2C3610D /* PrebidServer.swift */; };
+		13C0EE0B43632E9D46732B5D /* TeadsDisplayInterstitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBE4469A9FDA6FF3189CE9E /* TeadsDisplayInterstitialViewController.swift */; };
 		2235279D5C42ED56993F7486 /* Pods_PrebidDemoObjectiveC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B36D91CB781AAC3B2E9CED /* Pods_PrebidDemoObjectiveC.framework */; };
+		3A85E55E055D70CAB4791DC1 /* TeadsInterstitialAdsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328CD74E1A7CB6911E7375AA /* TeadsInterstitialAdsTest.swift */; };
 		3B91139C2351AB73A1FCAA3D /* Pods_PrebidDemoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD5DAB24E3A731BAE7B7F4F /* Pods_PrebidDemoSwift.framework */; };
 		4A202872DBC83DC8657AD22A /* Pods_PrebidDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D15B7407C160BC5C35E9AD7 /* Pods_PrebidDemoTests.framework */; };
 		53072B562921021B00228462 /* GAMOriginalAPIDisplayInterstitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53072B552921021B00228462 /* GAMOriginalAPIDisplayInterstitialViewController.swift */; };
@@ -251,6 +254,8 @@
 		53F35F512926D702001C1183 /* MAXNativeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53F35F502926D702001C1183 /* MAXNativeAdView.xib */; };
 		53F35F57292792D6001C1183 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F35F56292792D6001C1183 /* SettingsViewController.m */; };
 		53F36047292EACF0001C1183 /* PrebidMobileAdMobAdapters.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53F36043292EACF0001C1183 /* PrebidMobileAdMobAdapters.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5A9984E217F4A97A16B00990 /* TeadsDisplayInterstitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBE4469A9FDA6FF3189CE9E /* TeadsDisplayInterstitialViewController.swift */; };
+		7A026E15C788DE8D77041180 /* PrebidServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0119B5FF650BC0E2C3610D /* PrebidServer.swift */; };
 		9205E49127B561A9003DCCCC /* TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9205E49027B561A9003DCCCC /* TestExtensions.swift */; };
 		9205E49427B5622B003DCCCC /* XCTestCase+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9205E49327B5622B003DCCCC /* XCTestCase+Extensions.swift */; };
 		C324CF5A29350A1F008DAA20 /* BannerVideoAdsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C324CF5929350A1F008DAA20 /* BannerVideoAdsTest.swift */; };
@@ -317,7 +322,9 @@
 		0012D90A2E214EBE007013F3 /* PrebidDemoSPM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrebidDemoSPM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0012D9152E21544E007013F3 /* PrebidDemoSPM-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PrebidDemoSPM-Info.plist"; sourceTree = "<group>"; };
 		0B32F72A9BBDBE997EFFDDA4 /* Pods-PrebidDemoSwift_Old.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrebidDemoSwift_Old.debug.xcconfig"; path = "Target Support Files/Pods-PrebidDemoSwift_Old/Pods-PrebidDemoSwift_Old.debug.xcconfig"; sourceTree = "<group>"; };
+		0FBE4469A9FDA6FF3189CE9E /* TeadsDisplayInterstitialViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TeadsDisplayInterstitialViewController.swift; sourceTree = "<group>"; };
 		27A91CDC4C1E50EB4FC1CD46 /* Pods-PrebidDemoSwift_Old.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrebidDemoSwift_Old.release.xcconfig"; path = "Target Support Files/Pods-PrebidDemoSwift_Old/Pods-PrebidDemoSwift_Old.release.xcconfig"; sourceTree = "<group>"; };
+		328CD74E1A7CB6911E7375AA /* TeadsInterstitialAdsTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TeadsInterstitialAdsTest.swift; sourceTree = "<group>"; };
 		383E9CE325712AC3006FA6F4 /* PrebidDemoTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PrebidDemoTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		53072B552921021B00228462 /* GAMOriginalAPIDisplayInterstitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GAMOriginalAPIDisplayInterstitialViewController.swift; sourceTree = "<group>"; };
 		53072B572921023E00228462 /* InterstitialBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialBaseViewController.swift; sourceTree = "<group>"; };
@@ -559,6 +566,7 @@
 		640E75E2C6EB2A7268230D2A /* Pods-PrebidDemoObjectiveC_Old.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrebidDemoObjectiveC_Old.release.xcconfig"; path = "Target Support Files/Pods-PrebidDemoObjectiveC_Old/Pods-PrebidDemoObjectiveC_Old.release.xcconfig"; sourceTree = "<group>"; };
 		71D584CFFA6132CB2B6B74A6 /* Pods-PrebidDemoObjectiveC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrebidDemoObjectiveC.debug.xcconfig"; path = "Target Support Files/Pods-PrebidDemoObjectiveC/Pods-PrebidDemoObjectiveC.debug.xcconfig"; sourceTree = "<group>"; };
 		725E7FE27DFBC5E532A78D55 /* Pods-PrebidDemoObjectiveC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrebidDemoObjectiveC.release.xcconfig"; path = "Target Support Files/Pods-PrebidDemoObjectiveC/Pods-PrebidDemoObjectiveC.release.xcconfig"; sourceTree = "<group>"; };
+		7E0119B5FF650BC0E2C3610D /* PrebidServer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PrebidServer.swift; sourceTree = "<group>"; };
 		9205E49027B561A9003DCCCC /* TestExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestExtensions.swift; sourceTree = "<group>"; };
 		9205E49327B5622B003DCCCC /* XCTestCase+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Extensions.swift"; sourceTree = "<group>"; };
 		924F663127FECDD100C8DAF7 /* PrebidMobileMAXAdapters.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PrebidMobileMAXAdapters.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -666,6 +674,7 @@
 			isa = PBXGroup;
 			children = (
 				53B03DA6291BF2C2000117E1 /* PrebidDemoLogger.swift */,
+				7E0119B5FF650BC0E2C3610D /* PrebidServer.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1129,6 +1138,7 @@
 				53072B4F2920DF3400228462 /* GAM */,
 				53072B4E2920DF1000228462 /* In-App */,
 				53072B512920DF4100228462 /* MAX */,
+				D12DE669F18050C6489F87CE /* Teads */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -1280,6 +1290,7 @@
 				C38D69C029362B7700E82B31 /* NativeAdsTest.swift */,
 				C38D69C329362B7700E82B31 /* Utils */,
 				C324CF5F29350A36008DAA20 /* Video */,
+				328CD74E1A7CB6911E7375AA /* TeadsInterstitialAdsTest.swift */,
 			);
 			path = PrebidDemoSwiftUITests;
 			sourceTree = "<group>";
@@ -1290,6 +1301,15 @@
 				C38D69C429362B7700E82B31 /* TestCases.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		D12DE669F18050C6489F87CE /* Teads */ = {
+			isa = PBXGroup;
+			children = (
+				0FBE4469A9FDA6FF3189CE9E /* TeadsDisplayInterstitialViewController.swift */,
+			);
+			name = Teads;
+			path = Teads;
 			sourceTree = "<group>";
 		};
 		FA12E452231E9C5900CAA05B = {
@@ -1755,6 +1775,8 @@
 				0012D8ED2E214EBE007013F3 /* InAppDisplayBannerViewController.swift in Sources */,
 				0012D8EE2E214EBE007013F3 /* IntegrationCaseManager.swift in Sources */,
 				0012D8EF2E214EBE007013F3 /* GAMNativeViewController.swift in Sources */,
+				7A026E15C788DE8D77041180 /* PrebidServer.swift in Sources */,
+				5A9984E217F4A97A16B00990 /* TeadsDisplayInterstitialViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1826,6 +1848,8 @@
 				53072B7729226CFE00228462 /* InAppDisplayBannerViewController.swift in Sources */,
 				53B03D99291A8EE7000117E1 /* IntegrationCaseManager.swift in Sources */,
 				5344E6AB2922826100A1F582 /* GAMNativeViewController.swift in Sources */,
+				0FB488C8DF07C8D99F76F387 /* PrebidServer.swift in Sources */,
+				13C0EE0B43632E9D46732B5D /* TeadsDisplayInterstitialViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1911,6 +1935,7 @@
 				C324CF5C29350A23008DAA20 /* InterstitialVideoAdsTest.swift in Sources */,
 				C38D69C629362B7700E82B31 /* NativeAdsTest.swift in Sources */,
 				C38D69C529362B7700E82B31 /* BaseAdsTest.swift in Sources */,
+				3A85E55E055D70CAB4791DC1 /* TeadsInterstitialAdsTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
