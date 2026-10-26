@@ -121,6 +121,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set(params.first, forKey: "IABGPP_GppSID")
         }
         
+        // Custom Prebid Server, used by the "Custom PBS" test cases
+        processArgumentsParser.addOption("PBS_HOST", paramsCount: 1, fireOnce: true) { params in
+            CustomPbsSettings.hostURL = params[0]
+        }
+
+        processArgumentsParser.addOption("PBS_ACCOUNT_ID", paramsCount: 1, fireOnce: true) { params in
+            CustomPbsSettings.accountID = params[0]
+        }
+
+        processArgumentsParser.addOption("PBS_CONFIG_ID", paramsCount: 1, fireOnce: true) { params in
+            CustomPbsSettings.configID = params[0]
+        }
+
+        processArgumentsParser.addOption("OPEN_TEST_CASE", paramsCount: 1, fireOnce: true) { params in
+            CustomPbsSettings.testCaseToOpen = params[0]
+        }
+
         processArgumentsParser.parseProcessArguments(ProcessInfo.processInfo.arguments)
        
         // AdMob

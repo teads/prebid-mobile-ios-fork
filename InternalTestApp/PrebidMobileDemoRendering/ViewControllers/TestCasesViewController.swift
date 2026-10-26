@@ -100,9 +100,22 @@ class TestCasesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         searchBar.endEditing(true)
         
-        //Create and configure the ViewController
-        let example = displayedExamples[indexPath.row]
+        open(example: displayedExamples[indexPath.row])
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
+        // OPEN_TEST_CASE launch argument: skip the list and open the test case directly.
+        if let title = CustomPbsSettings.testCaseToOpen,
+           let example = examples.first(where: { $0.title == title }) {
+            CustomPbsSettings.testCaseToOpen = nil
+            open(example: example)
+        }
+    }
+    
+    private func open(example: TestCase) {
+        //Create and configure the ViewController
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: example.exampleVCStoryboardID)
         vc.view.backgroundColor = UIColor.white
         vc.title = example.title

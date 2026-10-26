@@ -1132,6 +1132,17 @@ struct TestCaseManager {
                 setupCustomParams(for: interstitialController.prebidConfigId)
             }),
             
+            TestCase(title: "Display Interstitial Custom PBS (In-App)",
+                     tags: [.interstitial, .inapp, .server],
+                     exampleVCStoryboardID: "AdapterViewController",
+                     configurationClosure: { vc in
+                guard let adapterVC = vc as? AdapterViewController else {
+                    return
+                }
+
+                adapterVC.setup(adapter: CustomPbsInterstitialController(rootController: adapterVC))
+            }),
+
             TestCase(title: "Display Interstitial 320x480 (In-App, Custom Renderer)",
                      tags: [.interstitial, .inapp, .server],
                      exampleVCStoryboardID: "AdapterViewController",
