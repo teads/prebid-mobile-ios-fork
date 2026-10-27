@@ -179,6 +179,15 @@ struct IntegrationCaseManager {
         ),
         
         IntegrationCase(
+            title: "Teads Display Interstitial",
+            integrationKind: .inApp,
+            adFormat: .displayInterstitial,
+            configurationClosure: {
+                TeadsDisplayInterstitialViewController()
+            }
+        ),
+        
+        IntegrationCase(
             title: "In-App Display Interstitial Plugin Renderer 320x480",
             integrationKind: .inApp,
             adFormat: .displayInterstitial,

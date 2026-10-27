@@ -4,6 +4,19 @@
 <dict>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-3384408078236170~9501675642</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>consul</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>
