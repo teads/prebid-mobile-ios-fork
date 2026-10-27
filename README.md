@@ -1,3 +1,20 @@
+> [!NOTE]
+> **Teads fork of [prebid/prebid-mobile-ios](https://github.com/prebid/prebid-mobile-ios).** Used for Teads tests and demo changes. Not a Teads SDK release.
+>
+> **Branches**
+> - `master`: exact mirror of upstream `master`. Never commit or merge into it. It is synced with upstream from time to time, together with the release tags.
+> - `main`: default branch. All Teads changes go here, through pull requests.
+>
+> **Updating from upstream**
+> 1. Sync `master` (and tags) with upstream.
+> 2. Open a PR that merges `master` into `main`. Merge, don't rebase: `main` is shared.
+>
+> **Keeping syncs easy**
+> - Prefer new files in Teads folders (`teads` packages, `scripts/teads/`, `Examples/Teads/`) over edits to upstream files.
+> - Keep unavoidable edits to upstream files small.
+> - Send generic fixes upstream instead of carrying them here.
+> - Don't commit internal hostnames, IPs or credentials. This repo is public.
+
 # Prebid Mobile iOS SDK
 
 To work with Prebid Mobile, you will need access to a Prebid Server. See [this page](https://docs.prebid.org/prebid-server/overview/prebid-server-overview.html) for options.
